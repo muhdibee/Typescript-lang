@@ -54,10 +54,26 @@ let myEmployee: EmployeeType = {
     retire: (Date)=> console.log(Date)
 }
 
-// Union type: use the | symbol to specify multiple types of a variable.
+// Union type: use the | symbol to specify any of the specified types for a variable.
 function kgToLbs(weight: number | string): number{
     if(typeof weight === 'number'){
         return weight * 2.2;
     }
     return parseInt(weight) * 2.2;
+}
+
+// Intersection type: use the & symbol to specify multiple types of a variable.
+type Draggable = {
+    drag: () => void
+};
+
+type resizable = {
+    reSize: () => void
+};
+
+type UIWidget = Draggable & resizable;
+
+let textBox: UIWidget = {
+    drag: () => {},
+    reSize: () => {}
 }
