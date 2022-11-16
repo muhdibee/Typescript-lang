@@ -53,3 +53,11 @@ let myEmployee: EmployeeType = {
     name: 'muhammad',
     retire: (Date)=> console.log(Date)
 }
+
+// Union type: use the | symbol to specify multiple types of a variable.
+function kgToLbs(weight: number | string): number{
+    if(typeof weight === 'number'){
+        return weight * 2.2;
+    }
+    return parseInt(weight) * 2.2;
+}
