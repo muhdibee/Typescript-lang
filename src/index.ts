@@ -79,5 +79,13 @@ let textBox: UIWidget = {
 }
 
 // Literal types: used to specify exact value of variable union and intersection can be used to specify the value.
-let quantity: 50 | 100 | 120 = 120;
-let measurement: 'cm' | 'inch' = 'inch';
+let Quantity: 50 | 100 | 120 = 120;
+let Metric: 'cm' | 'inch' = 'inch';
+
+// Nullable (null type): used when a variable can be of type null.
+function greet(name: string | null | undefined): string {
+    if (name){
+        return `Hello ${name.toLocaleUpperCase(name)}.`
+    }
+    return 'Hola!'
+}
