@@ -33,8 +33,23 @@ function calculateTax(income: number, taxYear: number = 2022): number {
 console.log(calculateTax(50_000))
 
 // Objects:
-
 let employee: {
     readonly id: number, // make the id property readability so that it's value cannot be changed during the course of the program.
     name?: string //make name property optional.
-} = {id: 1, name: 'muhammad'}
+    retire: (Date: Date)=> void //Set the return type of a method to void i.e does not return any value.
+} = {id: 1, name: 'muhammad', retire: (Date)=> console.log(Date)}
+
+
+// using type alias to rewrite the employee object above.
+type EmployeeType = {
+    readonly id: number,
+    name?: string
+    retire: (Date: Date)=> void
+}
+
+// using the EmployeeType alias.
+let myEmployee: EmployeeType = {
+    id: 1,
+    name: 'muhammad',
+    retire: (Date)=> console.log(Date)
+}
