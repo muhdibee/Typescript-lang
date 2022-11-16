@@ -77,3 +77,7 @@ let textBox: UIWidget = {
     drag: () => {},
     reSize: () => {}
 }
+
+// Literal types: used to specify exact value of variable union and intersection can be used to specify the value.
+let quantity: 50 | 100 | 120 = 120;
+let measurement: 'cm' | 'inch' = 'inch';
