@@ -82,10 +82,27 @@ let textBox: UIWidget = {
 let Quantity: 50 | 100 | 120 = 120;
 let Metric: 'cm' | 'inch' = 'inch';
 
-// Nullable (null type): used when a variable can be of type null.
+// Nullables (null type): used when a variable can be of type null.
 function greet(name: string | null | undefined): string {
     if (name){
         return `Hello ${name.toLocaleUpperCase(name)}.`
     }
     return 'Hola!'
 }
+
+// Optional property access operator: used to check if a property exist in variable or to check if function is actually a function when calling the function.
+// Creating a customer type.
+type Customer = {
+    birthday: Date
+}
+function getCustomer(id: number): Customer | null | undefined {
+    return id === 0? null : {birthday: new Date()}
+}
+
+let customer = getCustomer(1);
+console.log(customer?.birthday?.getFullYear()) // use the optional property access to access customer as it may be null. Same for birthday.
+
+const log = (data: any)=> console.log(data);
+
+// use optional property access operator to check if function is actually exist. also used for access array element using the same syntax.
+log?.("hello world");
