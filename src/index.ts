@@ -90,8 +90,11 @@ function greet(name: string | null | undefined): string {
     return 'Hola!'
 }
 
-// Optional property access operator: used to check if a property exist in variable or to check if function is actually a function when calling the function.
-// Creating a customer type.
+/*  Optional property access operator: used to check if a property
+    exist in variable or to check if function is actually a function
+    when calling the function.
+    Creating a customer type.
+*/
 type Customer = {
     birthday: Date
 }
@@ -104,5 +107,48 @@ console.log(customer?.birthday?.getFullYear()) // use the optional property acce
 
 const log = (data: any)=> console.log(data);
 
-// use optional property access operator to check if function is actually exist. also used for access array element using the same syntax.
+/*  use optional property access operator to check
+    if function is actually exist. also used for access
+    array element using the same syntax.
+*/
 log?.("hello world");
+
+//   Type assertion: used to specify the current type of a value as in the below example:
+//   let phone = <HTMLInputElement> document.getElementById("phone");
+//   log?.(phone.value);
+
+// Unknown type: when using unknown type unlike the any type TypScript forces you to do type checking for the unknown variable or passed parameter.
+function render(document: unknown) {
+    // We have to narrow down to a specific type
+    // before we can perform any operations
+    // on an unknown type
+    if(typeof document == 'string'){
+        document.toUpperCase()
+    }
+
+    if(typeof document == 'number'){
+        document.toString().toUpperCase()
+    }
+
+
+    // TypeScript throws an error when an unknown
+    // variable is used without type checking.
+    // document.round()
+}
+
+// never type: used to tell TypeScript compiler that a function will
+// never return a value or always throw an error i.e it runs infinitely
+// (note never void type is not same as never type)
+function processEvents(): never {
+    // This function never returns
+    // because it has an infinite loop.
+    while(true){
+        // Read message from queue.
+    }
+}
+
+processEvents()
+
+/*
+log("Hello World.")  // TypeScript throws an error when it detects an unreachable code. (when set in tsconfig.)
+*/
