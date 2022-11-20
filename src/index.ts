@@ -201,3 +201,26 @@ let seats = new seatAssignment();
 seats.A2 = 'Sani';
 
 console.log("Occupied seats:", Object.keys(seats).length);
+
+class Ride{
+    private static _activeRides  : number = 0;
+
+    static get activeRides(): number {
+        return Ride._activeRides;
+    }
+    start(){
+        Ride._activeRides++;
+    }
+    stop(){
+        Ride._activeRides--;
+    }
+
+}
+
+let ride_1 = new Ride()
+let ride_2 = new Ride()
+
+ride_1.start();
+ride_2.start();
+
+console.log("active rides:", Ride.activeRides);
