@@ -187,3 +187,5 @@ let account = new Account(1, "Muhammad", 100);
 account.balance = 0;
 account.deposit(100);
 console.log(`${account.owner} your balance is: ${account.balance}`);
+// Checking the type of an object.
+console.log(account.owner, `account is an instanceof Account class:`, account instanceof Account);
