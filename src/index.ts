@@ -147,7 +147,6 @@ function processEvents(): never {
     }
 }
 
-processEvents()
 
 /*
 log("Hello World.")  // TypeScript throws an error when it detects an unreachable code. (when set in tsconfig.)
@@ -155,9 +154,10 @@ log("Hello World.")  // TypeScript throws an error when it detects an unreachabl
 
 // Create Account class.
 class Account {
-    id: number;
+    readonly id: number;
     owner: string;
     balance: number;
+    nickname?: string;
 
     constructor(id: number, owner: string, balance: number){
         this.id = id;
@@ -167,8 +167,16 @@ class Account {
 
     deposit (amount: number): void {
         if(amount <= 0){
-            throw new Error('Invalid amount');
+            throw Error('Invalid amount');
         }
         this.balance += amount;
     }
 }
+
+let account = new Account(1, "Muhammad", 100);
+// account.deposit(-100);
+account.deposit(100);
+console.log(`${account.owner} your balance is: ${account.balance}`);
+
+
+processEvents() //When this method is called, all code after it won't run.
