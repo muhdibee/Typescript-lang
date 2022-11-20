@@ -156,7 +156,8 @@ log("Hello World.")  // TypeScript throws an error when it detects an unreachabl
 // Create Account class.
 class Account {
     nickname?: string;
-
+    // with parameter properties, we can create and initialize
+    // properties in one place.
     constructor(
         public readonly id: number,
         public owner: string,
@@ -261,3 +262,25 @@ class Teacher extends Person{
 const teacher_1 = new Teacher("Yusuf", 'Sani');
 
 console.log('Techer\'s name: ', teacher_1.fullName);
+
+// Working with abstract classes
+abstract class shape {
+    constructor(public color: string){}
+    abstract render(): void;
+}
+
+// Inheriting an abstract class
+class circle extends shape{
+    constructor(public radius: number, color:string){
+        super(color)
+    }
+    override render(): {diameter: number, color: string} {
+        return {diameter: this.radius * 2, color: this.color}
+
+    }
+}
+
+// Create an instance of circle class.
+let RedCircle = new circle(4, "Red");
+
+console.log('RedCircle Object:', RedCircle.render());

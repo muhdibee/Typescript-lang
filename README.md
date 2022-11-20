@@ -1,7 +1,11 @@
 # Typescript-lang
 
-###contributor
-- Muhammad Ibrahim
+TypeScript learning journey.
+
+##contributor
+
+-   Muhammad Ibrahim
 
 ---
+
 &copy; MIT
