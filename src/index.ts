@@ -189,3 +189,15 @@ account.deposit(100);
 console.log(`${account.owner} your balance is: ${account.balance}`);
 // Checking the type of an object.
 console.log(account.owner, `account is an instanceof Account class:`, account instanceof Account);
+
+class seatAssignment {
+    // Index signature property
+    [seatNumber: string]: string;
+}
+
+let seats = new seatAssignment();
+
+ seats.A1 = 'Muhammad';
+seats.A2 = 'Sani';
+
+console.log("Occupied seats:", Object.keys(seats).length);
