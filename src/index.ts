@@ -146,6 +146,7 @@ function processEvents(): never {
         // Read message from queue.
     }
 }
+// processEvents() //When this method is called, all code after it won't run.
 
 
 /*
@@ -156,27 +157,27 @@ log("Hello World.")  // TypeScript throws an error when it detects an unreachabl
 class Account {
     readonly id: number;
     owner: string;
-    balance: number;
+    private _balance: number;
     nickname?: string;
 
-    constructor(id: number, owner: string, balance: number){
+    constructor(id: number, owner: string, _balance: number){
         this.id = id;
         this.owner = owner;
-        this.balance = balance;
+        this._balance = _balance;
     }
 
+    getBalance(): number {
+        return this._balance;
+    }
     deposit (amount: number): void {
         if(amount <= 0){
             throw Error('Invalid amount');
         }
-        this.balance += amount;
+        this._balance += amount;
     }
 }
 
 let account = new Account(1, "Muhammad", 100);
 // account.deposit(-100);
 account.deposit(100);
-console.log(`${account.owner} your balance is: ${account.balance}`);
-
-
-processEvents() //When this method is called, all code after it won't run.
+console.log(`${account.owner} your balance is: ${account.getBalance()}`);
