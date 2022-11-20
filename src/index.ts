@@ -155,19 +155,22 @@ log("Hello World.")  // TypeScript throws an error when it detects an unreachabl
 
 // Create Account class.
 class Account {
-    readonly id: number;
-    owner: string;
-    private _balance: number;
     nickname?: string;
 
-    constructor(id: number, owner: string, _balance: number){
-        this.id = id;
-        this.owner = owner;
-        this._balance = _balance;
+    constructor(
+        public readonly id: number,
+        public owner: string,
+        private _balance: number){
     }
 
-    getBalance(): number {
+    get balance(): number {
         return this._balance;
+    }
+    set balance(value: number) {
+        if(value < 0){
+            throw Error("Invalid value")
+        }
+        this._balance = value;
     }
     deposit (amount: number): void {
         if(amount <= 0){
@@ -178,6 +181,9 @@ class Account {
 }
 
 let account = new Account(1, "Muhammad", 100);
-// account.deposit(-100);
+// setter methods should not be called
+// on private properties like balance, only use other methods like
+//deposit and withdraw to to update private variables
+account.balance = 0;
 account.deposit(100);
-console.log(`${account.owner} your balance is: ${account.getBalance()}`);
+console.log(`${account.owner} your balance is: ${account.balance}`);
