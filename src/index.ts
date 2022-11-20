@@ -202,6 +202,7 @@ seats.A2 = 'Sani';
 
 console.log("Occupied seats:", Object.keys(seats).length);
 
+// Create Ride class.
 class Ride{
     private static _activeRides  : number = 0;
 
@@ -235,6 +236,7 @@ class Person{
         }
 }
 
+//  Using override key word to inherit a class.
 class Student extends Person{
     constructor(public studentId: number, firstName: string, lastName: string){
         super(firstName, lastName)
@@ -248,3 +250,14 @@ class Student extends Person{
 const student1 = new Student(1, 'Muhammad', 'Ibrahim');
 
 console.log('I am here make student walk:', student1.takeTest());
+
+// Using override key word to change modify the implementation of inherited method
+class Teacher extends Person{
+    override get fullName(): string {
+        return "professor" + ' ' + super.fullName
+    }
+}
+
+const teacher_1 = new Teacher("Yusuf", 'Sani');
+
+console.log('Techer\'s name: ', teacher_1.fullName);
