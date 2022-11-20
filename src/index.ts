@@ -224,3 +224,27 @@ ride_1.start();
 ride_2.start();
 
 console.log("active rides:", Ride.activeRides);
+
+class Person{
+    constructor(public firstName: string, public lastName: string){}
+        get fullName(): string{
+            return `${this.firstName} ${this.lastName}`
+        }
+        walk(){
+            return console.log("here 234 Walking...")
+        }
+}
+
+class Student extends Person{
+    constructor(public studentId: number, firstName: string, lastName: string){
+        super(firstName, lastName)
+    }
+    takeTest(){
+        return " student Taking test..."
+
+    }
+}
+
+const student1 = new Student(1, 'Muhammad', 'Ibrahim');
+
+console.log('I am here make student walk:', student1.takeTest());
