@@ -1,4 +1,4 @@
-const sum: Function = (a: number, b: number)=>{
+const sum: Function = (a: number, b: number): void=>{
     console.log(`${a} + ${b} is ${a+b}.`);
 }
 

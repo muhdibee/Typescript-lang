@@ -2,7 +2,7 @@
 
 TypeScript learning journey.
 
-##contributor
+## Contributor
 
 -   Muhammad Ibrahim
 
