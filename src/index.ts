@@ -284,3 +284,28 @@ class circle extends shape{
 let RedCircle = new circle(4, "Red");
 
 console.log('RedCircle Object:', RedCircle.render());
+
+// An interface is used to define the shape of child classes.
+// It is a parent class that has no method implementation,
+// Define an interface.
+interface Calender {
+    name: string;
+    addEvent(): void;
+    removeEvent(): void;
+}
+
+// Implement the Calender interface: Unlike classes that
+// are extended by child classes, an inherited is implemented keyword.
+
+// Inherit the Calender interface.
+
+class Google_calender implements Calender{
+    constructor(public name: string){}
+    addEvent(): void {
+        // Add an event
+    }
+    removeEvent(): void {
+        // Remove an event
+    }
+
+}
