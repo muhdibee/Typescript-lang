@@ -330,3 +330,15 @@ const pair = new KeyValuePair<string, string>('name', 'Muhammad');
 // Call instances with different parameter types.
 pair.show_keyValue();
 position.show_keyValue();
+
+// Working with generic functions
+function wrapInArray<T>(value: T) { // Create a generic class with template T
+    return [value, value]
+}
+
+// create an instance pair and specify the type as required.
+const myNumber = wrapInArray<number>(20);
+const myLetter = wrapInArray<string>("A");
+
+// Call instances.
+console.log(`Number array: ${myNumber}; Letter array: ${myLetter}`);
