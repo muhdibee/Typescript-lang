@@ -321,8 +321,11 @@ class KeyValuePair <K, V> { // Create a generic class with template of k and v.
 
 
 // create an instance pair and specify the type for K and V to be string and string.
+// The type annotation can be omitted, and the compiler will
+//infer their types based on the values supplied in the argument a seen below.
+const position = new KeyValuePair(1, 'Muhammad');
+// create an instance with type annotation
 const pair = new KeyValuePair<string, string>('name', 'Muhammad');
-const position = new KeyValuePair<number, string>(1, 'Muhammad');
 
 // Call instances with different parameter types.
 pair.show_keyValue();
