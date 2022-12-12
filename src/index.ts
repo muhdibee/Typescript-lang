@@ -309,3 +309,21 @@ class Google_calender implements Calender{
     }
 
 }
+
+// Working with Generic classes.
+// The idea and use of generic classes is giving a single ability to have different forms/templates.
+class KeyValuePair <K, V> { // Create a generic class with template of k and v.
+    constructor(public key:K, public value: V){}
+    public show_keyValue (){
+        console.log(`Showing ${this.key} : ${this.value}`)
+    }
+}
+
+
+// create an instance pair and specify the type for K and V to be string and string.
+const pair = new KeyValuePair<string, string>('name', 'Muhammad');
+const position = new KeyValuePair<number, string>(1, 'Muhammad');
+
+// Call instances with different parameter types.
+pair.show_keyValue();
+position.show_keyValue();
