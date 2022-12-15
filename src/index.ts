@@ -287,6 +287,7 @@ console.log('RedCircle Object:', RedCircle.render());
 
 // An interface is used to define the shape of child classes.
 // It is a parent class that has no method implementation,
+// we use an interface to define variables and unimlimented functions
 // Define an interface.
 interface Calender {
     name: string;
@@ -342,3 +343,27 @@ const myLetter = wrapInArray<string>("A");
 
 // Call instances.
 console.log(`Number array: ${myNumber}; Letter array: ${myLetter}`);
+
+// Working with generic interfaces.
+// Define an interface
+interface Result<T> {
+    data: T | null,
+    error: string | null
+}
+
+function fetch<T>(url:string): Result<T>{
+    return {data: null, error: null}
+}
+
+interface User {
+    username: string
+}
+
+interface Product {
+    title: string
+}
+
+// Use fetch function on User type
+let result = fetch<User>('url')
+// Access username in from user type.
+result.data?.username
