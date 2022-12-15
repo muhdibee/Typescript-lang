@@ -105,13 +105,13 @@ function getCustomer(id: number): Customer | null | undefined {
 let customer = getCustomer(1);
 console.log(customer?.birthday?.getFullYear()) // use the optional property access to access customer as it may be null. Same for birthday.
 
-const log = (data: any)=> console.log(data);
+// const log = (data: any)=> console.log(data);
 
 /*  use optional property access operator to check
     if function is actually exist. also used for access
     array element using the same syntax.
 */
-log?.("hello world");
+log?.('label', "hello world");
 
 //   Type assertion: used to specify the current type of a value as in the below example:
 //   let phone = <HTMLInputElement> document.getElementById("phone");
@@ -152,6 +152,13 @@ function processEvents(): never {
 /*
 log("Hello World.")  // TypeScript throws an error when it detects an unreachable code. (when set in tsconfig.)
 */
+
+// *************************************************************************
+
+// custom log function
+function log(label: string, data: any): any {
+    return console.log(`${label} : ${data}`)
+}
 
 // Create Account class.
 class Account {
@@ -237,6 +244,8 @@ class Person{
         }
 }
 
+
+// *************************************************************************
 //  Using override key word to inherit a class.
 class Student extends Person{
     constructor(public studentId: number, firstName: string, lastName: string){
@@ -263,6 +272,8 @@ const teacher_1 = new Teacher("Yusuf", 'Sani');
 
 console.log('Techer\'s name: ', teacher_1.fullName);
 
+
+// *************************************************************************
 // Working with abstract classes
 abstract class shape {
     constructor(public color: string){}
@@ -311,6 +322,8 @@ class Google_calender implements Calender{
 
 }
 
+
+// *************************************************************************
 // Working with Generic classes.
 // The idea and use of generic classes is giving a single ability to have different forms/templates.
 class KeyValuePair <K, V> { // Create a generic class with template of k and v.
@@ -332,6 +345,8 @@ const pair = new KeyValuePair<string, string>('name', 'Muhammad');
 pair.show_keyValue();
 position.show_keyValue();
 
+
+// *************************************************************************
 // Working with generic functions
 function wrapInArray<T>(value: T) { // Create a generic class with template T
     return [value, value]
@@ -344,15 +359,18 @@ const myLetter = wrapInArray<string>("A");
 // Call instances.
 console.log(`Number array: ${myNumber}; Letter array: ${myLetter}`);
 
+
+// *************************************************************************
 // Working with generic interfaces.
 // Define an interface
 interface Result<T> {
+    url: string
     data: T | null,
     error: string | null
 }
 
 function fetch<T>(url:string): Result<T>{
-    return {data: null, error: null}
+    return {url: url, data: null, error: null}
 }
 
 interface User {
@@ -367,3 +385,19 @@ interface Product {
 let result = fetch<User>('url')
 // Access username in from user type.
 result.data?.username
+
+// *************************************************************************
+// Working with generic constraints
+// Define template interfaces
+interface MyPerson {
+    name: string
+}
+
+// Define generic interface with a template that extends template
+// interfaces, use union operator to constrain the template return types
+function echo<T extends MyPerson>(value:T): T {
+    return log('person', value)
+}
+
+// Call the function
+echo({name: 'Muhammad'})
